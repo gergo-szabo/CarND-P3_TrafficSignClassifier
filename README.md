@@ -60,40 +60,41 @@ My final model consisted of the following layers:
 
 #### Hyperparameters
 
-Adam optimizer
-EPOCHS = 80 (Over 80 the NN starts to memorize the dataset.)
-Learning rate = 0.001 (Higher rate resulted in bigger swings in validation accuracy.)
-BATCH_SIZE = 128
+* Adam optimizer
+* EPOCHS = 80 (Over 80 the NN starts to memorize the dataset.)
+* Learning rate = 0.001 (Higher rate resulted in bigger swings in validation accuracy.)
+* BATCH_SIZE = 128
 
 #### 4. Design history
 
 My final model results were:
-* validation set accuracy of 0.976 (0.968-0.980 in a few run)
-* test set accuracy of 0.958
+* validation set accuracy: 0.976 (0.968-0.980 in a few run)
+* test set accuracy: 0.958
 
 First I run a few test on the LeNet model with samples which had
 * 3 color channel (RGB)
 * 1 color channel (greyscale, no preprocessing)
 * 2 color channel (H and S from HLS)
-I decided to use greyscale images due to superior performance.
 
-The depth of the CNN outputs were increased as the initial architecture (LeNet) was developed for simplier data structure (hand-written numbers).
+I decided to use greyscale images due to superior performance. The depth of the convolutional layers were increased as the initial architecture (LeNet) was developed for simplier data structure (hand-written numbers).
 
-The model learned too quickly so I decided to introduce droupout between the layers. For the CNN layers only a low dropout rate increased the performance.
+The model learned too quickly so I decided to introduce droupout between the layers. For the convolutional layers only a low dropout rate increased the performance.
 
-Later I removed the pooling after the 2nd CNN. An increased dropout rate in combination with a wider follow-up layer performed better. However the first CNN seems to work well with a pooling / low dropout rate combination.
+Later I removed the pooling after the 2nd convolutional layers. An increased dropout rate in combination with a wider follow-up layer performed better. However the first convolutional layer seems to work well with a pooling / low dropout rate combination.
 
 The following parameters were not investigated:
-* Stride and window size for first CNN (I don't expect any improvement here.)
-* Pooling window size for first CNN (I don't expect any improvement here.)
-* Stride and window size for second CNN 
-* Pooling window size for second CNN (I don't expect any improvement here.)
+* Stride and window size for first convolutional layer (I don't expect any improvement here.)
+* Pooling window size for first convolutional layer (I don't expect any improvement here.)
+* Stride and window size for second convolutional layer 
+* Pooling window size for second convolutional layer (I don't expect any improvement here.)
 * Output size of first fully connected layer
-* Effect of additional CNN layers
+* Effect of additional convolutional layer layers
 
 ### Test a Model on New Images
 
 #### Control pictures
+
+The following test images were collected from the internet.
 
 The first image might be difficult to classify because it is partially masked by other signs.
 The second and third picture should not be a challange for the NN.
@@ -105,19 +106,19 @@ The fifth image is not facing the lane/car/camera. Having a clear recognition fo
 #### Predictions
 
 The NN made the following prediction (rounded):
-* 1st image:
-    Speed limit (80km/h) 94%
-    Speed limit (20km/h) 6%
-* 2nd image:
-    Right-of-way at the next intersection 100%
-* 3rd image:
-    No entry 100%
-* 4th image: 
-    Road work 82%
-    Speed limit (50km/h) 18%
-* 5th image:
-    Roundabout mandatory 55%
-    Right-of-way at the next intersection 42%
-    Turn left ahead 2%
+1. 1st image:
+   * Speed limit (80km/h) 94%
+   * Speed limit (20km/h) 6%
+2. 2nd image:
+   * Right-of-way at the next intersection 100%
+3. 3rd image:
+   * No entry 100%
+4. 4th image: 
+   * Road work 82%
+   * Speed limit (50km/h) 18%
+5. 5th image:
+   * Roundabout mandatory 55%
+   * Right-of-way at the next intersection 42%
+   * Turn left ahead 2%
 
 The predictions are correct for the first four. As hoped the NN assigned multiple low probability class for the fifth image. However I expected at least three more or less equal probability which could be discarded by high confidentiality.
