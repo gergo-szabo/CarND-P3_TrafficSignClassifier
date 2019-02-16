@@ -14,8 +14,13 @@ Rubric: [link](https://review.udacity.com/#!/rubrics/481/view)
 ### Data Set Summary & Exploration
 
 Knowing your dataset is crucial. The first step is to check how much data we have because Neural Networks are not efficient under tens of thousands of training sample.
+
 Second step is to get information about the structure of the data. In this case we have 32x32 RGB pictures.
-Third step is  to get information about the representation of classes (labels). It is very important to have a proper number of sample for all class. (Not perfect but good enough.) Also the training, validation and test set should have the same distribution between classes. (OK)
+
+Third step is  to get information about the representation of classes (labels). It is very important to have a proper number of sample for all class. (Not perfect but good enough.)
+
+Also the training, validation and test set should have the same distribution between classes. (OK)
+
 Fourth step is to visualize the data. In this step I learned that the light intensity of the samples differ greatly. Also blurry pictures are present in the dataset.
 
 ![Visualization](vis1.png)
